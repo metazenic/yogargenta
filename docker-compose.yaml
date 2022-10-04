@@ -1,8 +1,8 @@
-version: '3.3'
+version: '3.9'
 
 services:
   web:
-    image: wordpress:latest
+    image: wordpress:php8.0-fpm-alpine
     ports:
       - "8081:80"
     depends_on:
