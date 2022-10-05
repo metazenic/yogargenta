@@ -1,11 +1,12 @@
-version: '3.9'
+version: '3.3'
 
 services:
   wordpress:
-    image: wordpress:php8.0-fpm-alpine
+    image: wordpress
+    container_name: "yogargenta_wordpress_server"
     restart: always
     ports:
-      - "8081:80"
+      - "8080:80"
     depends_on:
       - "db"
     networks:
@@ -18,10 +19,11 @@ services:
       - WORDPRESS_DB_NAME=wordpressdb
       - WORDPRESS_TABLE_PREFIX=hj
     volumes:
-      - wordpress:/var/www/html
+      - ./wordpress:/var/www/html
 
   db:
     image: mysql:5.7
+    container_name: yogargenta_database
     restart: always
     networks:
       - internal
@@ -31,7 +33,7 @@ services:
       - MYSQL_PASSWORD=my-secret-pw
       - MYSQL_DATABASE=wordpressdb
     volumes:
-      - db:/var/www/html
+      - ./mysql_data:/var/www/html
 
 networks:
   public:

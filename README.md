@@ -1,3 +1,5 @@
 # yogargenta
 
-vamos a trabajar con wordpress y docker
+vamos a trabajar con wordpress y docker.
+
+Para levantar correr `docker-compose up`
